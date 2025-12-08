@@ -1,16 +1,14 @@
 import string
 
-alphabet = string.ascii_uppercase
-size = len(alphabet)
+def vinegere_create(s):
+    """
+    Créé table vignere de la taille de S où s = alphabet
+    """
+    alphabet = string.ascii_uppercase[:s]
+    table = []
 
-vigenere_matrix = []
+    for i in range(s):
+        shifted = alphabet[i:] + alphabet[:i]
+        table.append(shifted)
 
-
-for i in range(size):
-    row = alphabet[i:] + alphabet[:i]  # Décale tout l'alphabet de 1
-vigenere_matrix.append(list(row))
-
-
-# Décomment pour tester program
-# for r in vigenere_matrix[:10]:
-#     print(" ".join(r))
+    return table
