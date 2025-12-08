@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "----------------------------------------"
+echo "    VIGENERE APPLICATION"
+echo "----------------------------------------"
+echo ""
+echo "Choose an option:"
+echo "1) Encrypt"
+echo "2) Decrypt"
+echo ""
+read -p "Enter 1 or 2: " choice
+
+# Determine mode based on user choice
+if [ "$choice" == "1" ]; then
+    mode="encrypt"
+elif [ "$choice" == "2" ]; then
+    mode="decrypt"
+else
+    echo "Invalid choice. Exiting."
+    exit 1
+fi
+
+# Run the python program with the selected mode
+python3 main.py "$mode"
