@@ -4,7 +4,7 @@ import string
 #import fonction vinegere_create donc a garder les deux fichiers dans le même directoir
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-def creer_table_vigenere():
+def create_table_vigenere():
 
     table = {}
 
@@ -14,7 +14,7 @@ def creer_table_vigenere():
 
     return table
 
-TABLE_VIGENERE = creer_table_vigenere()
+TABLE_VIGENERE = create_table_vigenere()
 
 
 def generate_random_key(message):
@@ -91,4 +91,5 @@ if __name__ == "__main__":
         print("Message:     ", message)
         print("Key:         ", key)
         print("Ciphertext:  ", ciphertext)
+
 
