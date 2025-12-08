@@ -22,7 +22,6 @@ def generate_random_key(message):
     Génere clé de la même taille que le message
     les characters non-alphabetique gardent leur place pour ne pas changer la ponctuation.
     """
-    alphabet = string.ascii_uppercase
     key = ""
 
     for char in message:
@@ -44,7 +43,7 @@ def encrypt(message, key, table):
     passe par chaque lettre pour encrypter avec liste vigenere générer par fonction dans autre fichier
     copie lettre non_alphabetique pour ne pas ruiner ponctuation
     """
-    alphabet = string.ascii_uppercase
+    
     encrypted = ""
 
     for m, k in zip(message, key): #double incrémentation où on verifie chaque m dans message et chaque k dans key
@@ -53,9 +52,9 @@ def encrypt(message, key, table):
             encrypted += m #rajoute la lettre au message encypter
             continue #continue pour toute les lettres
 
-        row = alphabet.index(k.upper()) #compare à table vinegere en maj puisque ca doit etre en maj
+        row = table[k.upper()] #compare à table vinegere en maj puisque ca doit etre en maj
         col = alphabet.index(m.upper()) #fait la même 
-        encrypted_char = table[row][col] #la clé est utilisé comme row donc, si on a A B C et que k=B alors on prend la colone de B et on déscend en prenant la lettre correspondant a la lettre qu'on encrypt
+        encrypted_char = row[col] #la clé est utilisé comme row donc, si on a A B C et que k=B alors on prend la colone de B et on déscend en prenant la lettre correspondant a la lettre qu'on encrypt
 
         # maintient si la lettre est maj ou pas
         if m.islower():
@@ -91,5 +90,6 @@ if __name__ == "__main__":
         print("Message:     ", message)
         print("Key:         ", key)
         print("Ciphertext:  ", ciphertext)
+
 
 
