@@ -14,7 +14,7 @@ def create_table_vigenere():
 
     return table
 
-TABLE_VIGENERE = create_table_vigenere()
+
 
 
 def generate_random_key(message):
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     message = input("Entre mot a encrypt : ")
 
     # Create a table of size 26 (A–Z)
-    table = vinegere_create(26)
+    table = create_table_vigenere()
 
 
     gclé=input("veux-tu générer un clé ou la choisire toi même? Entrer rien pour générer la clé, quelquechose si vous voulez la générer vous même :  ")
@@ -90,6 +90,5 @@ if __name__ == "__main__":
         print("Message:     ", message)
         print("Key:         ", key)
         print("Ciphertext:  ", ciphertext)
-
 
 
