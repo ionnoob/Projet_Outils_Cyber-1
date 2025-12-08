@@ -63,9 +63,19 @@ if __name__ == "__main__":
     # Create a table of size 26 (A–Z)
     table = vinegere_create(26)
 
-    key = generate_random_key(message)
-    ciphertext = encrypt(message, key, table)
 
-    print("Message:     ", message)
-    print("Key:         ", key)
-    print("Ciphertext:  ", ciphertext)
+    gclé=input("veux-tu générer un clé ou la choisire toi même? Entrer rien pour générer la clé, quelquechose si vous voulez la générer vous même :  ")
+    if len(gclé)>0: #Si clé est pas nul alors clé générer par utilisateur
+        key = input("Entrer votre clé en Majuscule: ")
+        ciphertext = encrypt(message, key, table)
+
+        print("Message:     ", message)
+        print("Key:         ", key)
+        print("Ciphertext:  ", ciphertext)
+    else: #iSi clé est nul alors génération automatique de la clé
+        key = generate_random_key(message)
+        ciphertext = encrypt(message, key, table)
+
+        print("Message:     ", message)
+        print("Key:         ", key)
+        print("Ciphertext:  ", ciphertext)
