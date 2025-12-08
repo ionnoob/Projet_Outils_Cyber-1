@@ -1,5 +1,5 @@
 from util import encrypt, generate_random_key
-from vingere import create_table_vignere
+from vingere import create_table_vigenere
 
 def main():
 
@@ -18,7 +18,7 @@ def main():
         return
 
     # Load the Vigenère table
-    table = create_table_vignere()
+    table = create_table_vigenere()
 
     # Get user message
     message = input("Enter the message to encrypt : ")
