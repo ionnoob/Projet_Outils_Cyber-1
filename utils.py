@@ -56,28 +56,28 @@ def encrypt(message, key, table):
 # 
 # Usage pour test, a commenter ou décommenter plus tard
 # 
-if __name__ == "__main__":
-    message = input("Entre mot a encrypt : ")
+#if __name__ == "__main__":
+#    message = input("Entre mot a encrypt : ")
 
     # Create a table of size 26 (A–Z)
-    table = create_table_vigenere()
+#    table = create_table_vigenere()
 
 
-    gclé=input("veux-tu générer un clé ou la choisire toi même? Entrer rien pour générer la clé, quelquechose si vous voulez la générer vous même :  ")
-    if len(gclé)>0: #Si clé est pas nul alors clé générer par utilisateur
-        key = input("Entrer votre clé en Majuscule: ")
-        ciphertext = encrypt(message, key, table)
+#    gclé=input("veux-tu générer un clé ou la choisire toi même? Entrer rien pour générer la clé, quelquechose si vous voulez la générer vous même :  ")
+ #   if len(gclé)>0: #Si clé est pas nul alors clé générer par utilisateur
+  #      key = input("Entrer votre clé en Majuscule: ")
+   #     ciphertext = encrypt(message, key, table)
 
-        print("Message:     ", message)
-        print("Key:         ", key)
-        print("Ciphertext:  ", ciphertext)
-    else: #iSi clé est nul alors génération automatique de la clé
-        key = generate_random_key(message)
-        ciphertext = encrypt(message, key, table)
+    #    print("Message:     ", message)
+     #   print("Key:         ", key)
+      #  print("Ciphertext:  ", ciphertext)
+    #else: #iSi clé est nul alors génération automatique de la clé
+     #   key = generate_random_key(message)
+      #  ciphertext = encrypt(message, key, table)
 
-        print("Message:     ", message)
-        print("Key:         ", key)
-        print("Ciphertext:  ", ciphertext)
+       # print("Message:     ", message)
+        #print("Key:         ", key)
+        #print("Ciphertext:  ", ciphertext)
 
 # --- Décryptage Vigenère : version préliminaire  ---
 
@@ -98,5 +98,6 @@ if __name__ == "__main__":
 # 8. On garde maj pour maj en min pour min
 # 9. On ajoute la lettre déchiffrée au résultat final. comme dans le premier code
 # 10. On passe au caractère suivant du texte chiffré et on recommence jusqu’à la fin.
+
 
 
