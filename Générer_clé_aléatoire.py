@@ -2,7 +2,19 @@ import random
 import string
 
 #import fonction vinegere_create donc a garder les deux fichiers dans le même directoir
-from Liste_Vigenère import vinegere_create
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+def creer_table_vigenere():
+
+    table = {}
+
+    for i, lettre_cle in enumerate(alphabet):
+        ligne_decalee = alphabet[i:] + alphabet[:i]
+        table[lettre_cle] = ligne_decalee
+
+    return table
+
+TABLE_VIGENERE = creer_table_vigenere()
 
 
 def generate_random_key(message):
@@ -79,3 +91,4 @@ if __name__ == "__main__":
         print("Message:     ", message)
         print("Key:         ", key)
         print("Ciphertext:  ", ciphertext)
+
