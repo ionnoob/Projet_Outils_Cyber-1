@@ -1,6 +1,6 @@
 import random
 import string #Pour importer ASCII mais on est passé a une version manuscrite de l'alphabet donc...
-from vingere.py import create_table_vigenere
+from vigenere import create_table_vigenere
 #import fonction vinegere_create donc a garder les deux fichiers dans le même directoir
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -99,6 +99,7 @@ def encrypt(message, key, table):
 # 8. On garde maj pour maj en min pour min
 # 9. On ajoute la lettre déchiffrée au résultat final. comme dans le premier code
 # 10. On passe au caractère suivant du texte chiffré et on recommence jusqu’à la fin.
+
 
 
 
