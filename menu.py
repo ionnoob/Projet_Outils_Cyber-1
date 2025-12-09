@@ -1,5 +1,5 @@
 from utils import encrypt, generate_random_key
-from vingere import create_table_vigenere
+from vigenere import create_table_vigenere
 
 def main():
 
