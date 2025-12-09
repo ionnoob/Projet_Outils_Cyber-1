@@ -7,7 +7,7 @@ def main():
     print("1) Encrypt a message")
     print("2) Exit")
 
-    choice = input("Choose an option : ").strip()
+    choice = int(input("Choose an option : "))
 
     if choice == "2":
         print("Goodbye!")
@@ -17,13 +17,13 @@ def main():
         print("Invalid choice.")
         return
 
-    # Load the Vigenère table
+    # créé table vignere
     table = create_table_vigenere()
 
-    # Get user message
+    
     message = input("Enter the message to encrypt : ")
 
-    # Ask for key choice
+    # Choix clé
     print("\nKey options:")
     print("1) Enter your own key")
     print("2) Generate a random key")
