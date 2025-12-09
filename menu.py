@@ -1,4 +1,4 @@
-from util import encrypt, generate_random_key
+from utils import encrypt, generate_random_key
 from vingere import create_table_vigenere
 
 def main():
