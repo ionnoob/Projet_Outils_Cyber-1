@@ -1,5 +1,4 @@
 import random
-import string #Pour importer ASCII mais on est passé a une version manuscrite de l'alphabet donc...
 from vigenere import create_table_vigenere
 #import fonction vinegere_create donc a garder les deux fichiers dans le même directoir
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -54,6 +53,40 @@ def encrypt(message, key, table):
     return encrypted
 
 
+
+
+
+def decrypt(ciphertext, key, table):
+    """
+    Décrypt un message crypté avvec vigenère, tout en conservant
+    la ponctuation utilisant la même logique que le chiffrement
+    """
+    decrypted = ""
+
+    for c,k in zip(ciphertext, key):
+        if handle_non_letters(c):
+            decrypted+=c
+            continue
+    
+        row = table[k.upper()]
+        col = row.index(c.upper())
+    
+
+        decrypted_char = alphabet[col]
+
+        if c.islower():
+            decrypted_char = decrypted_char.lower()
+        decrypted += decrypted_char
+
+
+    return decrypted
+
+
+
+
+
+
+
 # 
 # Usage pour test, a commenter ou décommenter plus tard
 # 
@@ -79,29 +112,3 @@ def encrypt(message, key, table):
        # print("Message:     ", message)
         #print("Key:         ", key)
         #print("Ciphertext:  ", ciphertext)
-
-# --- Décryptage Vigenère : version préliminaire  ---
-
-# Traite chaque char du texte un par un
-# Avance dans la clé en même temps(double incrémentation?)
-
-# 1. Prendre la lettre chiffrée courante.
-# 2. Prendre la lettre de la clé correspondante.
-# 3. Si ce n’est pas une lettre (espace, virgule, etc.), on la renvoie tel quel.
-#    On ne modifie pas la ponctuation ni les espaces.
-# 4. Si c’est une lettre, on regarde dans la table Vigenère.
-#    dico donc chaque clé est une lettre (A, B, C ...)
-#    et la valeur est une ligne de l’alphabet décalée.
-# 5. On utilise la lettre de la clé pour choisir la bonne ligne
-# 6. Dans cette ligne, on cherche l’index de la lettre chiffrée.
-#    index correspond a la position où cette lettre apparaît dans la ligne décalée.
-# 7. Avec index, on récupère lettre d’origine dans l’alphabet normal :
-# 8. On garde maj pour maj en min pour min
-# 9. On ajoute la lettre déchiffrée au résultat final. comme dans le premier code
-# 10. On passe au caractère suivant du texte chiffré et on recommence jusqu’à la fin.
-
-
-
-
-
-
