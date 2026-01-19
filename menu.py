@@ -1,6 +1,6 @@
-from utils import encrypt, generate_random_key, decrypt
+from utils import *
 from vigenere import create_table_vigenere
-from file_manager import read_file, write_file, ask_file_path, save_as, save_key_to_file, load_key_from_file
+from file_manager import *
 
 
 def main():
@@ -8,17 +8,43 @@ def main():
     print("=== MENU VIGENERE ===")
     print("1) Encrypt a message")
     print("2) Decrypt a message")
-    print("3) Exit")
+    print("3) Frequence Table(File reccomended for better result)")
+    print("4) Exit")
 
     choice = int(input("Choose an option : "))
 
-    if choice == 3:
+    if choice == 4:
         print("Goodbye!")
         return
 
-    if choice != 1 and choice != 2:
+    if choice != 1 and choice != 2 and choice != 3:
         print("Invalid choice.")
         return
+
+    if choice == 3:
+        print("\nChoice File or Text")
+        print("1) From File")
+        print("2) From text")
+        is_file = int(input("Choose 1 or 2 : "))
+
+        if is_file==1:
+            filename= input("Enter Your file name : ").strip()
+            output = input("Enter your output file name : ").strip()
+            if output=="":
+                tab_rec(filename, from_file=True)
+            else:
+                tab_rec(filename, from_file=True,output_file=output)
+        elif is_file == 2:
+            text = input("Enter your message : ").strip()
+            output = input("Enter your output file name : ").strip()
+            if output == "":
+                tab_rec(text)
+            else:
+                tab_rec(text,output_file=output)
+        else:
+            print("Invalid choice.")
+    return
+
 
     # créé table vignere
     table = create_table_vigenere()
