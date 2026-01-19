@@ -1,4 +1,6 @@
 import random
+import os
+from file_manager import OUTPUT_DIR, ensure_output_dir
 from vigenere import create_table_vigenere
 #import fonction vinegere_create donc a garder les deux fichiers dans le même directoir
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -96,7 +98,9 @@ def tab_rec(source, from_file=False, output_file="frequency.txt"):
     # Si la source vient d'un fichier
     if from_file:
         try:
-            with open(source, "r", encoding="utf-8") as f:
+            ensure_output_dir()
+            path = os.path.join(OUTPUT_DIR, source)
+            with open(path, "r", encoding="utf-8") as f:
                 text = f.read()
         except FileNotFoundError:
             print("Erreur : fichier introuvable.")
@@ -131,7 +135,8 @@ def tab_rec(source, from_file=False, output_file="frequency.txt"):
 
     # Export graphique ASCII
     try:
-        with open(output_file, "w", encoding="utf-8") as f:
+        path_out = os.path.join(OUTPUT_DIR, output_file)
+        with open(path_out, "w", encoding="utf-8") as f:
             f.write("=== Graphique de fréquence (ASCII) ===\n")
             f.write("Chaque # représente ~1%\n\n")
 
