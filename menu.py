@@ -28,15 +28,15 @@ def main():
         is_file = int(input("Choose 1 or 2 : "))
 
         if is_file==1:
-            filename= input("Enter Your file name : ").strip()
-            output = input("Enter your output file name : ").strip()
+            filename= input("Enter Your file name (.txt) : ").strip()
+            output = input("Enter your output file name (.txt) : ").strip()
             if output=="":
                 tab_rec(filename, from_file=True)
             else:
                 tab_rec(filename, from_file=True,output_file=output)
         elif is_file == 2:
             text = input("Enter your message : ").strip()
-            output = input("Enter your output file name : ").strip()
+            output = input("Enter your output file name (.txt) : ").strip()
             if output == "":
                 tab_rec(text)
             else:
