@@ -43,7 +43,7 @@ def main():
                 tab_rec(text,output_file=output)
         else:
             print("Invalid choice.")
-    return
+        return
 
 
     # créé table vignere
