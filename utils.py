@@ -83,7 +83,69 @@ def decrypt(ciphertext, key, table):
 
 
 
+# Fonctions optionelles
 
+
+def tab_rec(source, from_file=False, output_file="frequency.txt"):
+    """
+    Génère un tableau de fréquence des lettres (A–Z)
+    avec occurrences + pourcentages
+    et exporte un graphique ASCII dans un fichier.
+    """
+
+    # Si la source vient d'un fichier
+    if from_file:
+        try:
+            with open(source, "r", encoding="utf-8") as f:
+                text = f.read()
+        except FileNotFoundError:
+            print("Erreur : fichier introuvable.")
+            return
+    else:
+        text = source
+
+    # Initialisation des fréquences
+    freq = {}
+    for letter in alphabet:
+        freq[letter] = 0
+
+    # Comptage des lettres
+    total_letters = 0
+    for char in text.upper():
+        if char in alphabet:
+            freq[char] += 1
+            total_letters += 1
+
+    if total_letters == 0:
+        print("Aucune lettre à analyser.")
+        return
+
+    # Affichage du tableau
+    print("\n=== Tableau de fréquence ===")
+    print("Lettre | Occurrences | Pourcentage")
+    print("----------------------------------")
+
+    for letter in alphabet:
+        percent = (freq[letter] / total_letters) * 100
+        print(f"  {letter}    | {freq[letter]:11} | {percent:6.2f}%")
+
+    # Export graphique ASCII
+    try:
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write("=== Graphique de fréquence (ASCII) ===\n")
+            f.write("Chaque # représente ~1%\n\n")
+
+            for letter in alphabet:
+                percent = (freq[letter] / total_letters) * 100
+                bars = "#" * int(percent)
+                f.write(f"{letter} | {bars} ({percent:.2f}%)\n")
+
+        print(f"\nGraphique exporté dans : {output_file}")
+
+    except PermissionError:
+        print("Erreur : impossible d'écrire le fichier graphique.")
+
+    return freq
 
 
 
